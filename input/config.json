@@ -1,3 +1,8 @@
 {
-  "ticker": ["AMZN", "DB1"]
+  "ticker": "DB1.DE",
+  "pars-data": {
+    "size-history": 5,
+    "target-feature": "Open",
+    "data-split": [85,10,5]
+  }
 }
