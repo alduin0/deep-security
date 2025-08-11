@@ -66,4 +66,5 @@ def create_dataset(ticker:str='DB1.DE',
               'targets-vali': torch.from_numpy(y_vali),
               'targets-test': torch.from_numpy(y_test),}
     mylog.info(f"Created dataset dictionary from raw data.")
+
     return mydict

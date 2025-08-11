@@ -33,9 +33,7 @@ def main():
                     seq_len=config['pars-data']['size-history'],
                     )
 
-    print(mydataset['features-train'][0])
-    print(mydataset['features-train'][1])
-    print(mydataset['targets-train'][0])
+    #
 
 
 
