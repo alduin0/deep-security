@@ -1,9 +1,11 @@
-from src.func_create_dataset import create_dataset as CDS
+from src.func_create_dataset import create_dataset as cds
+from src.class_model_lstm import LSTMModel as lstm
+
 import json
 import pathlib as pl
 import logging
 import inspect
-import datetime
+import torch
 
 #timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 logging.basicConfig(level=logging.DEBUG,
@@ -28,12 +30,26 @@ def main():
     # constructing pytorch dataset from tickers and other ----------------------------------
     # parameters passed to function
     mylog.info("Calling function for creating pytorch compatible dataset.")
-    mydataset = CDS(ticker=config['ticker'],
+    mydataset = cds(ticker=config['ticker'],
                     split=config['pars-data']['data-split'],
                     seq_len=config['pars-data']['size-history'],
                     )
+    # setting up and configuring model
+    mylog.info(f"Setting up model...")
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    mylog.info(f"Using device: {device}")
 
-    #
+    model    = lstm(input_size  = len(mydataset['features-train'][0]),
+                    hidden_size = config['pars-model']['size-hidden'],
+                    num_layers  = config['pars-model']['num-layers'],
+                    output_size = len(mydataset['targets-train']),
+                    dropout     = config['pars-model']['dropout'],
+                    ).to(device)
+    mylog.info(f"Successfully mapped model to {device} device.")
+    loss_fn = torch.nn.MSELoss(reduction='mean')
+    optimizer = torch.optim.Adam(model.parameters(),
+                                 lr=config['pars-learning']['learning-rate'])
+
 
 
 

@@ -4,5 +4,15 @@
     "size-history": 5,
     "target-feature": "Open",
     "data-split": [85,10,5]
+  },
+  "pars-model": {
+    "num-layers": 3,
+    "size-hidden": 128,
+    "dropout":0.3
+  },
+  "pars-learning": {
+    "size-batch":32,
+    "learning-rate": 1e-3,
+    "num-epochs": 10
   }
 }
