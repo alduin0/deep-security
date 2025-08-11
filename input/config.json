@@ -1,7 +1,7 @@
 {
-  "ticker": "DB1.DE",
+  "ticker": "META",
   "pars-data": {
-    "size-history": 5,
+    "size-history": 50,
     "target-feature": "Open",
     "data-split": [85,10,5]
   },
@@ -11,9 +11,9 @@
     "dropout":0.3
   },
   "pars-learning": {
-    "size-batch":32,
-    "learning-rate": 1e-3,
-    "num-epochs": 10,
-    "num-workers": 4
+    "size-batch":64,
+    "learning-rate": 1e-7,
+    "num-epochs": 100,
+    "num-workers": 6
   }
 }

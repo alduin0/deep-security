@@ -31,7 +31,7 @@ def create_dataset(ticker:str='DB1.DE',
     # cutting down dataframes to five features wanted
     # columns stored in dataframe in  below order and from earliest [first entry]
     # to latest date [last entry]
-    keys = ['Open', 'High', 'Low', 'Close', 'Volume']
+    keys = ['Open']
     # scaling all entries to range [0,1]
     for key in keys:
         val = data_raw[key].values
