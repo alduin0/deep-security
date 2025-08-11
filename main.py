@@ -50,6 +50,20 @@ def main():
     optimizer = torch.optim.Adam(model.parameters(),
                                  lr=config['pars-learning']['learning-rate'])
 
+    # setting up pytorch DataLoaders
+    dataset_train = torch.utils.data.TensorDataset(mydataset['features-train'],
+                                                    mydataset['targets-train']
+                                                  )
+    loader_train = torch.utils.data.DataLoader(dataset_train,
+                                               batch_size=config['pars-learning']['size-batch'],
+                                               shuffle=False,
+                                               num_workers=config['pars-learning']['num-workers'],
+                                               )
+
+    # training and evaluation loop
+    num_epochs = config['pars-learning']['num-epochs']
+
+
 
 
 
