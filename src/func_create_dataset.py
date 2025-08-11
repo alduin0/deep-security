@@ -11,6 +11,9 @@ def create_dataset(ticker:str='DB1.DE',
                    split:tuple[int]=(80, 15, 5),
                    seq_len:int=5
                    )->dict:
+    """
+    hello dox
+    """
     if sum(split) != 100:
         mylog.error(f"Invalid split values (train, val, test) = {split}")
         raise ValueError('split must add up to 100')
