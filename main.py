@@ -30,7 +30,12 @@ def main():
     mylog.info("Calling function for creating pytorch compatible dataset.")
     mydataset = CDS(ticker=config['ticker'],
                     split=config['pars-data']['data-split'],
-                    seq_len=config['pars-data']['size-history'],)
+                    seq_len=config['pars-data']['size-history'],
+                    )
+
+    print(mydataset['features-train'][0])
+    print(mydataset['features-train'][1])
+    print(mydataset['targets-train'][0])
 
 
 
